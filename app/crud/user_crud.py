@@ -4,11 +4,12 @@ from app.schemas.user_schemas import UserCreate
 from app.utils.auth import hash_password
 
 # Deze functie maakt een nieuwe gebruiker in de database
-def create_user(db: Session, user: UserCreate):
+def create_user(db: Session, user: UserCreate,role_id:str=2):
     db_user = User(
         name=user.name,
         email=user.email,
-        hashed_password=hash_password(user.password)  # versleutel het wachtwoord
+        hashed_password=hash_password(user.password),# versleutel het wachtwoord
+        role_id=role_id
     )
     db.add(db_user)
     db.commit()

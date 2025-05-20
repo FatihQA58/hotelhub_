@@ -23,7 +23,8 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = get_user_by_email(db, user.email)
     if existing_user:
         raise HTTPException(status_code=400, detail="E-mailadres bestaat al.")
-    return create_user(db, user)
+    return create_user(db, user,role_id=2)
+
 
 # Kullanıcı girişi ve token oluşturma
 @router.post("/login")
@@ -31,7 +32,7 @@ def login_user(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = D
     user = get_user_by_email(db, form_data.username)
     if not user or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(status_code=401, detail="Ongeldige inloggegevens.")
-    token = create_access_token(data={"user_id": user.id})
+    token = create_access_token(data={"user_id": user.id,"role_id":user.role_id})
     return {"access_token": token, "token_type": "bearer"}
 
 # Giriş yapmış kullanıcıyı getir

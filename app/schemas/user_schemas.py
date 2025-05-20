@@ -4,7 +4,7 @@ from pydantic import BaseModel, EmailStr
 class UserCreate(BaseModel):
     name: str             # naam is verplicht
     email: EmailStr       # geldig e-mailadres
-    password: str         # wachtwoord (gewoon tekst bij invoer)
+    password: str          # wachtwoord (gewoon tekst bij invoer)
 
 # Dit model wordt gebruikt als iemand probeert in te loggen
 class UserLogin(BaseModel):
@@ -16,6 +16,7 @@ class UserOut(BaseModel):
     id: int
     name: str
     email: EmailStr
+
 
     class Config:
         from_attributes = True  # yeni Pydantic v2 standardı

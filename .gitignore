@@ -13,3 +13,6 @@ app/crud/__pycache__/
 # Sanal ortam (eğer proje içinde varsa)
 venv/
 env/
+
+hotel.db 
+hotelhub.db

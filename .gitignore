@@ -2,8 +2,7 @@
 __pycache__/
 *.py[cod]
 
-# Veritabanı dosyası
-hotelhub.db
+
 
 # IDE dosyaları (örnek: PyCharm için)
 *.idea/

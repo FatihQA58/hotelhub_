@@ -5,7 +5,8 @@ class UserCreate(BaseModel):
     name: str             # naam is verplicht
     email: EmailStr       # geldig e-mailadres
     password: str          # wachtwoord (gewoon tekst bij invoer)
-
+    is_beheerder: bool = False
+    
 # Dit model wordt gebruikt als iemand probeert in te loggen
 class UserLogin(BaseModel):
     email: EmailStr

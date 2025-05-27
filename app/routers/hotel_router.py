@@ -13,7 +13,10 @@ from app.crud.hotel_crud import (
     update_hotel, delete_hotel_by_name
 )
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/hotels",
+      tags=["Hotels"]
+)
 
 # Zorgt voor een verbinding met de database
 def get_db():

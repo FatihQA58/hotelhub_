@@ -6,7 +6,10 @@ from app.db.database import SessionLocal
 from app.schemas.review_schemas import ReviewCreate, ReviewOut
 from app.crud.review_crud import create_review, get_all_reviews, get_reviews_by_hotel
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/hotel_reviews", 
+    tags=["Reviews"]
+)
 
 # Zorgt voor een verbinding met de database
 def get_db():
@@ -19,7 +22,11 @@ def get_db():
 # POST: voeg een nieuwe review toe
 @router.post("/", response_model=ReviewOut)
 def add_review(review: ReviewCreate, db: Session = Depends(get_db)):
-    return create_review(db=db, review=review)
+      """ 
+    Als hotelgast wil ik een beoordeling geven aan een hotel waar ik verbleef,  
+    zodat andere gasten van mijn ervaring kunnen leren.
+    """
+      return create_review(db=db, review=review)
 
 # GET: lijst alle reviews op
 @router.get("/", response_model=List[ReviewOut])

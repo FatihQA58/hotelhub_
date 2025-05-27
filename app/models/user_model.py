@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 from app.db.database import Base
@@ -11,6 +11,7 @@ class User(Base):
     name = Column(String, nullable=False)                       # naam van de gebruiker
     email = Column(String, unique=True, index=True, nullable=False)  # e-mailadres moet uniek zijn
     hashed_password = Column(String, nullable=False)
+    is_beheerder = Column(Boolean, default=False)
 
     role_id = Column(Integer, ForeignKey('Roles.id'),nullable=False)
     role = relationship("Role", back_populates="users")

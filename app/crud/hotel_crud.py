@@ -54,11 +54,11 @@ def search_hotels(
 
     return query.all()
 
-# Haal een hotel op via zijn ID
+# Haal een hotel op via zijn naam
 def get_hotel_by_name(db: Session, hotel_name: str):
     return db.query(Hotel).filter(Hotel.name == hotel_name).first()
 
-
+# Delete een hotel op via zijn naam
 def delete_hotel_by_name(db: Session, hotel_name: str):
     hotel = db.query(Hotel).filter(Hotel.name == hotel_name).first()
 

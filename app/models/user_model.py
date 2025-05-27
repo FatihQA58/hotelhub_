@@ -14,7 +14,7 @@ class User(Base):
 
     role_id = Column(Integer, ForeignKey('Roles.id'),nullable=False)
     role = relationship("Role", back_populates="users")
-
+    reservations = relationship("Reservation", back_populates="user")
 
 # Dit is de Role tabel
 class Role(Base):

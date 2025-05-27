@@ -24,11 +24,14 @@ class Room(Base):
     id = Column(Integer, primary_key=True, index=True)
     room_number= Column(String, nullable=False)
     description = Column(String, nullable=True)  # single,suite exc.
-    capacity = Column(Integer, default=1)  # capacity van kamer?
-    has_air_condition = Column(Boolean, default=False)  # heeft parkeergelegenheid?
+    aantal_bed = Column(Integer, default=1)  # aantal bed van kamer?
+    has_air_condition = Column(Boolean, default=False) # heeft aircondition?
+    has_koelkast = Column(Boolean, default=False) #heeft koelkast
+    has_tv = Column(Boolean, default=False) #heeft tv
     available = Column(Boolean, default=True)  # beschickbaar?
     price_per_night = Column(Float, nullable=False)  # prijs per nacht in euro
 
-    hotel_id = Column(String, ForeignKey("hotels.id"), nullable=False)  # id van het hotel
+    hotel_id = Column(Integer, ForeignKey("hotels.id"), nullable=False)  # id van het hotel
     hotel = relationship("Hotel", back_populates="rooms")
+    reservations = relationship("Reservation", back_populates="room")
 

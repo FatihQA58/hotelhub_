@@ -6,6 +6,7 @@ from app.utils import auth
 
 from app.db.database import SessionLocal
 from app.schemas.hotel_schemas import HotelOut, HotelCreate, HotelUpdate, HotelOutWithRooms
+
 from app.crud.hotel_crud import (
     search_hotels,
     create_hotel,
@@ -35,7 +36,9 @@ def search_hotels_endpoint(
 
 # POST: voeg een nieuw hotel toe
 @router.post("/", response_model=HotelOut)
-def add_hotel(hotel: HotelCreate, db: Session = Depends(get_db)):
+def add_hotel(hotel: HotelCreate, db: Session = Depends(get_db),user=Depends(auth.get_current_user)):
+    if user.role_id == 2:
+        raise HTTPException(status_code=403,detail='Verboden voor u,u moet Hotelbeheerder zijn')
     return create_hotel(db=db, hotel=hotel)
 
 # GET: haal een specifiek hotel op via ID

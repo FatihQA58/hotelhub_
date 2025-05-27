@@ -1,5 +1,15 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
 
+# Python cache klasör ve dosyaları
+__pycache__/
+app/__pycache__/
+app/crud/__pycache__/
+
+*.py[cod]
+
+# IDE dosyaları (örnek: PyCharm için)
+*.idea/
+*.vscode/
+
+# Sanal ortam (eğer proje içinde varsa)
+venv/
+env/

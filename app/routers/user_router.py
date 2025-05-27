@@ -7,7 +7,10 @@ from app.db.database import SessionLocal
 from app.utils.auth import verify_password, create_access_token, get_current_user
 from app.models.user_model import User
 
-router = APIRouter()
+router = APIRouter(
+     prefix="/users", 
+     tags=["Gebruikers"]
+)
 
 # Veritabanı bağlantısı
 def get_db():

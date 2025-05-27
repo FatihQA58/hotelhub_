@@ -5,7 +5,10 @@ from app.db.database import SessionLocal
 from app.schemas.booking_schemas import ReservationCreate, ReservationOut
 from app.crud.booking_crud import create_reservation, get_all_reservations
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/reservations",
+      tags=["Reservaties"]
+)
 
 # Zorgt voor een verbinding met de database
 def get_db():

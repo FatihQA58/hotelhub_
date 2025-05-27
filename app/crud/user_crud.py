@@ -9,6 +9,7 @@ def create_user(db: Session, user: UserCreate,role_id:str=2):
         name=user.name,
         email=user.email,
         hashed_password=hash_password(user.password),# versleutel het wachtwoord
+        is_beheerder=user.is_beheerder,
         role_id=role_id
     )
     db.add(db_user)

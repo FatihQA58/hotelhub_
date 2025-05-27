@@ -1,6 +1,10 @@
 fastapi
 uvicorn
 sqlalchemy
+<<<<<<< HEAD
 python-dotenv
 passlib[bcrypt]
 python-jose[cryptography]
+=======
+pydantic
+>>>>>>> 39483afee8d7ecc0cea0df4203cd6b2d29cae954

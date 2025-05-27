@@ -1,3 +1,1 @@
-# HotelHub 1.0
-
-Eenvoudige FastAPI project met gebruikersregistratie.
+# Fully Integrated HotelHub Backend

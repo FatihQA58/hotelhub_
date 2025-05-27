@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.models.user_model import User
 from app.utils import auth
+from app.db.database import get_db
 
 from app.db.database import SessionLocal
 from app.schemas.hotel_schemas import HotelOut, HotelCreate, HotelUpdate, HotelOutWithRooms
@@ -17,14 +18,6 @@ router = APIRouter(
     prefix="/hotels",
       tags=["Hotels"]
 )
-
-# Zorgt voor een verbinding met de database
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 # GET: zoek hotels op basis van stad en kenmerken
 @router.get("/search", response_model=List[HotelOutWithRooms])
